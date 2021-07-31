@@ -1,0 +1,1245 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,700&display=swap');
+@color:#fff;
+@opacityColor:rgba(255, 255, 255, 0.3);
+@darkcolor:#222;
+@opacityDarkColor:rgba(34, 34, 34, 0.9);
+@orange:#FF7600;
+@gray:rgb(34, 34, 34);
+
+.display(@direction,@jus){
+  display: flex;
+  flex-direction:@direction ;
+  align-items: center;
+  justify-content: @jus;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+body{
+  background-image: url(../img/pic.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+// 點擊更改STYLE
+.containerActive{
+  right: 0% !important;
+  opacity: 1 !important;
+}
+.gridA{
+  display: grid;
+  gap: 5px;
+  grid-template-areas:
+  "A A"
+  "A A"
+  "B C" !important;
+    .about{
+      &:hover{
+        .about-text{
+          height: 100% !important;
+          opacity: 0.9 !important;
+          // visibility:collapse !important;
+          top: 0 !important;
+        }
+      }
+    }
+}
+.gridB{
+  display: grid;
+  gap: 5px;
+  grid-template-areas:
+  "B B"
+  "B B"
+  "A C" !important;
+    .work{
+      &:hover{
+        .work-text{
+          height: 100% !important;
+          opacity: 0.8 !important;
+          // visibility:collapse !important;
+          top: 0 !important;
+        }
+      }
+    }
+}
+.gridC{
+  display: grid;
+  gap: 5px;
+  grid-template-areas:
+  "C C"
+  "C C"
+  "B A" !important;
+    .web{
+      &:hover{
+        .web-text{
+          height: 100% !important;
+          opacity: 0.8 !important;
+          // visibility:visible !important;
+          top:0 !important;
+        }
+      }
+    }
+}
+.linkActive{
+  background-color: @darkcolor;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: .3s;
+    &:hover{
+      color: @darkcolor !important;
+      background-color: @orange
+    }
+}
+// app
+#app{
+  .display(rows,center);
+  width: 100%;
+  height: 100vh;
+    .container{
+      width: calc(80%);
+      height: calc(80%);
+      background-color:@opacityColor;
+      backdrop-filter: blur(3px);
+      border-radius: 1%;
+      position: relative;
+      .bar{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        .slider-bar{
+          z-index: 999;
+          position: absolute;
+          width: 10%;
+          height: 100%;
+          background-color:@darkcolor ;
+          backdrop-filter: blur(3px);
+          border-top-left-radius: 10px;
+          .display(column,space-between);
+            .bar-text{
+              background-color: @orange;
+              color: #fff;
+              width: 100%;
+              height: 10%;
+              font-weight: 500;
+              display: grid;
+              place-content: center;
+              border-top-left-radius: 10px;
+              font-size: 2rem;
+              padding: 5px;
+            }
+            .bar-icon{
+              width: 100%;
+              height: 30%;
+              .display(column,space-evenly);
+                i{
+                  color: #fff;
+                  font-size: 1.2rem;
+                }
+            }
+        }//slider-bar
+        .menu-bar{
+          width: 100%;
+          height: 10%;
+          .display(row,flex-end);
+            .menu-icon{
+              z-index: 999;
+              width: 20%;
+              .display(rows,space-evenly);
+                i{
+                  color: @orange;
+                  font-size: 1.2rem;
+                }
+            }
+        }//menu-bar
+      }//bar
+      .resume{
+        position: absolute;
+        top: 0;
+        opacity: 0;
+        right: -90%;
+        width: 90%;
+        height: 100%;
+        transition: .5s;
+          .resume-container{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            .display(rows,center);
+              .resume-pi{
+                width: 50%;
+                height: 100%;
+                .display(column,center);
+                  .pi-pic{
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 50%;
+                    background:url(../img/main.png) center/cover;
+                  }
+                  .pi-contact{
+                    margin-top: 10px;
+                      h2{
+                        color:@orange;
+                      }
+                      ul{
+                        color: @gray;
+                        font-weight: 500;
+                        width: 100px;
+                      }
+                  }
+              }//pi
+              .resume-rs{
+                position: relative;
+                width: 50%;
+                height: 100%;
+                background: #EEE;
+                .display(column,space-evenly);
+                  .resume-box{
+                    width: 100%;
+                    height: 80%;
+                    padding: 5px;
+                    background-color: @gray;
+                      .about{
+                        position: relative;
+                        grid-area: A;
+                        background-color: #222;
+                        display: grid;
+                        place-content: center;
+                          i{
+                            font-size: 2.5rem;
+                            color: @color;
+                          }
+                          .about-text{
+                            position: absolute;
+                            top:-10%;
+                            left: 0;
+                            width: 100%;
+                            height: 60%;
+                            background-color: @color;
+                            opacity: 0;
+                            // visibility: hidden;
+                            backdrop-filter: blur(3px);
+                            .display(column,center);
+                            cursor: pointer;
+                            transition: .5s;
+                              p{
+                                padding: 15px;
+                                width: auto;
+                                color: @orange;
+                                font-weight: 700;
+                              }
+                          }
+                      }
+                      .work{
+                        position: relative;
+                        grid-area: B;
+                        background-color: #333;
+                        display: grid;
+                        place-content: center;
+                          i{
+                            font-size: 2.5rem;
+                            color: @color;
+                          }
+                          .work-text{
+                            position: absolute;
+                            top:-10%;
+                            left: 0;
+                            width: 100%;
+                            height: 60%;
+                            background-color: @color;
+                            opacity: 0;
+                            // visibility: hidden;
+                            backdrop-filter: blur(3px);
+                            .display(column,center);
+                            // align-items:flex-start;
+                            cursor: pointer;
+                            transition: .5s;
+                              h2{
+                                text-align: left;
+                                width: 80%;
+                                color: @orange;
+                              }
+                              ul{
+                                width: 80%;
+                                  .exp-title{
+                                    color: @darkcolor;
+                                    font-weight: 700;
+                                    font-size: 1.2rem;
+                                  }
+                              }
+                            }
+                      }
+                      .web{
+                        position: relative;
+                        grid-area: C;
+                        background-color: #444;
+                        display: grid;
+                        place-content: center;
+                          i{
+                            font-size: 2.5rem;
+                            color: @color;
+                          }
+                          .web-text{
+                            position: absolute;
+                            top:-10%;
+                            left: 0;
+                            width: 100%;
+                            height: 60%;
+                            background-color: @color;
+                            opacity: 0;
+                            // visibility: hidden;
+                            backdrop-filter: blur(3px);
+                            .display(column,center);
+                            cursor: pointer;
+                            transition: .5s;
+                              h2{
+                                text-align: left;
+                                width: 80%;
+                                color: @orange;
+                              }
+                              ul{
+                                width: 80%;
+                                  .exp-title{
+                                    color: @darkcolor;
+                                    font-weight: 700;
+                                    font-size: 1.2rem;
+                                  }
+                              }
+                            }
+                      }
+                  }
+                  .box-link{
+                    .display(row,space-evenly);
+                    width: 100%;
+                    height: 20%;
+                      li{
+                        a{
+                          color: @orange;
+                          font-size: 1.2rem;
+                        }
+                      }
+                  }
+              }
+          }//container
+      }//resume
+      .skill{
+        position: absolute;
+        top: 0;
+        right: -90%;
+        opacity: 0;
+        width: 90%;
+        height: 100%;
+        padding: 6%;
+        transition: 1s;
+        background-color: @opacityDarkColor;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(3,1fr);
+        place-content: center;
+          .skill-box{
+            position: relative;
+            width: 100%;
+            height: 450px;
+            background-color: @opacityColor;
+            border-radius: 10px;
+            .display(column,center);
+              .skill-icon{
+                width: 150px;
+                height: 50%;
+              }
+              .skill-text{
+                background-color: @gray;
+                width: 100%;
+                height: 50%;
+                padding: 3%;
+                border-bottom-left-radius:10px;
+                border-bottom-right-radius:10px;
+                h2{
+                  font-size: 1.5rem;
+                  color: @orange;
+                }
+                ul{
+                  font-size: .9rem;
+                  font-weight: 700;
+                    li{
+                      line-height: 200%;
+                      color: @color;
+                    }
+                }
+              }
+          }
+      }//skill
+      .portfolio{
+        position: absolute;
+        top: 0;
+        opacity: 0;
+        right: -90%;
+        width: 90%;
+        height: 100%;
+        background: url(../img/profolio/01-covid19.jpg) center/cover no-repeat rgba(34, 34, 34, 0.5);
+        background-blend-mode: color;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        transition: 1s;
+          .carousel{
+            position: relative;
+            bottom: -70%;
+            width: 100%;
+            height: 30%;
+            margin: auto;
+            background-color: @opacityColor;
+            backdrop-filter: blur(3px);
+            border-bottom-right-radius:10px;
+            .display(row,space-between);
+              .carousel-title{
+                width: 40%;
+                height: 100%;
+                .display(column,center);
+                  h1{
+                    a{
+                      color:@color;
+                    }
+                  }
+                  .arrow{
+                    width: 50%;
+                    .display(row,space-evenly);
+                      i{
+                        font-size: 1.5rem;
+                        color: @orange;
+                        cursor: pointer;
+                      }
+                  }
+              }
+              .carousel-tro{
+                width: 40%;
+                font-weight: 500;
+                letter-spacing: 1px;
+                font-size: 1.2rem;
+                  a{
+                    color: @color;
+                    text-decoration:underline;
+                  }
+              }
+              .carousel-menu{
+                width: 20%;
+                height: 100%;
+                background-color: @opacityDarkColor;
+                .display(column,center);
+                  h2{
+                    color: @orange;
+                  }
+                  ul{
+                    // height:100%;
+                    color: @color;
+                      li{
+                        line-height: 200%;
+                      }
+                  }
+              }
+          }//carousel
+      }//portfolio
+    }//container
+}
+
+@media(max-width:768px){
+  #app{
+      .container{
+        .bar{
+          .slider-bar{
+            width: 15%;
+            height: 100%;
+              .bar-text{
+                font-size: 1.8rem;
+              }
+          }//slider-bar
+          .menu-bar{
+              .menu-icon{
+                z-index: 999;
+                width: 50%;
+              }
+          }//menu-bar
+        }//bar
+        .resume{
+            .resume-container{
+                .resume-pi{
+                  width: 50%;
+                  height: 100%;
+                  .display(column,center);
+                    .pi-pic{
+                      width: 150px;
+                      height: 150px;
+                    }
+                }//pi
+            }//container
+        }//resume
+        .skill{
+          position: absolute;
+          top: 0;
+          right: -90%;
+          opacity: 0;
+          width: 90%;
+          height: 100%;
+          padding: 6%;
+          transition: 1s;
+          background-color: @opacityDarkColor;
+          display: grid;
+          gap: 10px;
+          grid-template-columns: repeat(3,1fr);
+          place-content: center;
+            .skill-box{
+              position: relative;
+              width: 100%;
+              height: 450px;
+              background-color: @opacityColor;
+              border-radius: 10px;
+              .display(column,center);
+                .skill-icon{
+                  width: 120px;
+                  height: 40%;
+                }
+                .skill-text{
+                  background-color: @gray;
+                  width: 100%;
+                  height: 60%;
+                  padding: 5%;
+                  border-bottom-left-radius:10px;
+                  border-bottom-right-radius:10px;
+                  h2{
+                    font-size: 1.2rem;
+                    color: @orange;
+                  }
+                  ul{
+                    font-size: .8rem;
+                    font-weight: 700;
+                      li{
+                        line-height: 180%;
+                        color: @color;
+                      }
+                  }
+                }
+            }
+        }//skill
+        .portfolio{
+            .carousel{
+              position: relative;
+              bottom: -60%;
+              width: 100%;
+              height: 40%;
+              margin: auto;
+              .display(row,space-between);
+                .carousel-title{
+                  width: 40%;
+                  height: 100%;
+                  .display(column,center);
+                    h1{
+                      a{
+                        color:@color;
+                      }
+                    }
+                    .arrow{
+                      width: 60%;
+                      .display(row,space-evenly);
+                        i{
+                          font-size: 1.5rem;
+                          color: @orange;
+                          cursor: pointer;
+                        }
+                    }
+                }
+                .carousel-tro{
+                  width: 40%;
+                  font-weight: 500;
+                  letter-spacing: 1px;
+                  font-size: 1rem;
+                }
+                .carousel-menu{
+                  width: 20%;
+                  height: 100%;
+                  background-color: @opacityDarkColor;
+                  .display(column,center);
+                    h2{
+                      color: @orange;
+                    }
+                    ul{
+                      // height:100%;
+                      color: @color;
+                        li{
+                          line-height: 200%;
+                        }
+                    }
+                }
+            }//carousel
+        }//portfolio
+      }//container
+  }
+}
+@media(max-width:560px){
+  .gridA{
+    display: grid;
+    gap: 5px;
+    grid-template-areas:
+    "A"
+    "A"
+    "A"
+    "A"
+    "A"
+    "B"
+    "C" !important;
+  }
+  .gridB{
+    display: grid;
+    gap: 5px;
+    grid-template-areas:
+    "B"
+    "B"
+    "B"
+    "B"
+    "B"
+    "A"
+    "C" !important;
+  }
+  .gridC{
+    display: grid;
+    gap: 5px;
+    grid-template-areas:
+    "C"
+    "C"
+    "C"
+    "C"
+    "C"
+    "B"
+    "A" !important;
+  }
+  .linkActive{
+    padding: 5px 8px;
+  }
+  #app{
+      .container{
+        .bar{
+          .slider-bar{
+            width: 20%;
+              .bar-text{
+                font-size: 1.2rem;
+              }
+          }//slider-bar
+          .menu-bar{
+              .menu-icon{
+                width: 80%;
+              }
+          }//menu-bar
+        }//bar
+        .resume{
+          .display(row,center);
+            .resume-container{
+              position: relative;
+              width: 100%;
+              height: 80%;
+              margin-left: 5%;
+              .display(column,center);
+                .resume-pi{
+                  width: 100%;
+                  height: 30%;
+                  .display(row,center);
+                    .pi-pic{
+                      display: none;
+                    }
+                    .pi-contact{
+                      width: 60%;
+                      margin-bottom: 10px;
+                        h2{
+                          font-size: 1.2rem;
+                        }
+                        ul{
+                          font-size: .9rem;
+                          width: 100px;
+                        }
+                    }
+                }//pi
+                .resume-rs{
+                  width: 70%;
+                  height: 70%;
+                    .resume-box{
+                      width: 100%;
+                      height: 80%;
+                        .about{
+                            i{
+                              font-size: 2rem;
+                              color: @color;
+                            }
+                            .about-text{
+                              h2{
+                                font-size: .8rem;
+                              }
+                                p{
+                                  font-size: .8rem;
+                                  padding: 0px;
+                                  width: auto;
+                                }
+                            }
+                        }
+                        .work{
+                            i{
+                              font-size: 2rem;
+                            }
+                            .work-text{
+                                h2{
+                                  font-size: 1.1rem;
+                                  width: 100%;
+                                }
+                                ul{
+                                  width: 100%;
+                                    li{
+                                      font-size: .7rem;
+                                    }
+                                    .exp-title{
+                                      font-size: .7rem;
+                                    }
+                                }
+                              }
+                        }
+                        .web{
+                            i{
+                              font-size: 2rem;
+                            }
+                            .web-text{
+                                h2{
+                                  width: 100%;
+                                  font-size: 1.1rem;
+                                }
+                                ul{
+                                  width: 100%;
+                                    li{
+                                      font-size: .7rem;
+                                    }
+                                    .exp-title{
+                                      font-size: .7rem;
+                                    }
+                                }
+                              }
+                        }
+                    }
+                    .box-link{
+                      .display(row,space-evenly);
+                      width: 100%;
+                      height: 20%;
+                        li{
+                          a{
+                            font-size: .8rem;
+                          }
+                        }
+                    }
+                }
+            }//container
+        }//resume
+        .skill{
+          grid-template-columns: repeat(1,1fr);
+            .skill-box{
+              width: 100%;
+              height: 150px;
+              margin-left: 5%;
+              background-color: transparent;
+                .skill-icon{
+                  display: none;
+                }
+                .skill-text{
+                  width: 85%;
+                  height: 100%;
+                  padding: 6%;
+                  h2{
+                    font-size: 1rem;
+                  }
+                  ul{
+                    font-size: .6rem;
+                    list-style: circle;
+                    margin: 3px;
+                      li{
+                        line-height: 120%;
+                      }
+                  }
+                }
+            }
+        }//skill
+        .portfolio{
+          .carousel{
+            position: relative;
+            bottom: -40%;
+            width: 100%;
+            height: 60%;
+            margin: auto;
+            .display(column,space-between);
+              .carousel-title{
+                width: 100%;
+                height: 35%;
+                .display(column,center);
+                  .arrow{
+                    width: 80%;
+                    .display(row,space-evenly);
+                  }
+              }
+              .carousel-tro{
+                width: 80%;
+                height: 25%;
+                font-weight: 500;
+                letter-spacing: 1px;
+                font-size: 1rem;
+                  p{
+                    padding: 20px;
+                    padding-left: 25px;
+                  }
+              }
+              .carousel-menu{
+                width: 100%;
+                height: 35%;
+                background-color: @opacityDarkColor;
+                .display(column,center);
+                  h2{
+                    font-size: 1.2rem;
+                    color: @orange;
+                  }
+                  ul{
+                    // height:100%;
+                    color: @color;
+                      li{
+                        line-height: 150%;
+                      }
+                  }
+              }
+          }//carousel
+      }//portfolio
+      }//container
+  }
+}
+@media(max-width:375px){
+  .gridA{
+    display: grid;
+    gap: 5px;
+    grid-template-areas:
+    "A"
+    "A"
+    "A"
+    "A"
+    "A"
+    "A"
+    "B"
+    "C" !important;
+  }
+  .gridB{
+    display: grid;
+    gap: 5px;
+    grid-template-areas:
+    "B"
+    "B"
+    "B"
+    "B"
+    "B"
+    "B"
+    "A"
+    "C" !important;
+  }
+  .gridC{
+    display: grid;
+    gap: 5px;
+    grid-template-areas:
+    "C"
+    "C"
+    "C"
+    "C"
+    "C"
+    "C"
+    "B"
+    "A" !important;
+  }
+  .linkActive{
+    padding: 3px 5px;
+  }
+  #app{
+      .container{
+        .bar{
+          .slider-bar{
+            width: 20%;
+              .bar-text{
+                font-size: 1.2rem;
+              }
+          }//slider-bar
+          .menu-bar{
+              .menu-icon{
+                width: 80%;
+              }
+          }//menu-bar
+        }//bar
+        .resume{
+          .display(row,center);
+            .resume-container{
+              height: 85%;
+              margin-left: 7%;
+              .display(column,center);
+                .resume-pi{
+                  margin: 10px auto;
+                  .display(row,center);
+                    .pi-contact{
+                        ul{
+                          font-size: .7rem;
+                        }
+                    }
+                }//pi
+                .resume-rs{
+                    .resume-box{
+                      width: 120%;
+                      height: 90%;
+                        .about{
+                            i{
+                              font-size: 1.5rem;
+                            }
+                            .about-text{
+                                p{
+                                  font-size: .08rem;
+                                  padding: 0px;
+                                  line-height: 100%;
+                                }
+                            }
+                        }
+                        .work{
+                            i{
+                              font-size: 1.5rem;
+                            }
+                            .work-text{
+                              h2{
+                                font-size: .5rem;
+                              }
+                              ul{
+                                width: 100%;
+                                  li{
+                                    line-height: 100%;
+                                  }
+                                  .exp-title{
+                                    line-height: 100%;
+                                  }
+                              }
+                            }
+                        }
+                        .web{
+                            i{
+                              font-size: 1.5rem;
+                            }
+                            .web-text{
+                              h2{
+                                font-size: .5rem;
+                              }
+                              ul{
+                                width: 100%;
+                                  li{
+                                    font-size: .5rem;
+                                    line-height: 100%;
+                                  }
+                                  .exp-title{
+                                    font-size: .5rem;
+                                    line-height: 100%;
+                                  }
+                              }
+                            }
+                        }
+                    }
+                    .box-link{
+                      background-color: @color;
+                      width: 120%;
+                      height: 20%;
+                        li{
+                          a{
+                            font-size: .08rem;
+                          }
+                        }
+                    }
+                }
+            }//container
+        }//resume
+        .skill{
+            gap: 3px;
+            .skill-box{
+              margin-top: 8px;
+              margin-left: 1.5%;
+              height: 120px;
+              width: 110%;
+                .skill-text{
+                  width: 85%;
+                  height: 100%;
+                  padding: 6%;
+                  h2{
+                    font-size: .8rem;
+                  }
+                  ul{
+                    list-style: none;
+                    margin: .5px;
+                      li{
+                        line-height: 100%;
+                        font-size: .2rem;
+                      }
+                  }
+                }
+            }
+        }//skill
+        .portfolio{
+          .carousel{
+              .carousel-title{
+                width: 100%;
+                height: 25%;
+                .display(column,center);
+                  h1{
+                    font-size: 1.2rem;
+                  }
+                  .arrow{
+                    width: 80%;
+                    .display(row,space-evenly);
+                  }
+              }
+              .carousel-tro{
+                width: 80%;
+                height: 35%;
+                font-weight: 500;
+                letter-spacing: 0px;
+                font-size: .8rem;
+                  p{
+                    padding: 20px;
+                    padding-left: 25px;
+                  }
+              }
+              .carousel-menu{
+                  h2{
+                    font-size: 1rem;
+                    color: @orange;
+                  }
+                  ul{
+                      li{
+                        line-height: 120%;
+                        font-size: .8rem;
+                      }
+                  }
+              }
+          }//carousel
+      }//portfolio
+      }//container
+  }
+}
+// height
+@media(max-height:500px){
+  #app{
+    overflow: scroll;
+    height: 200vh;
+      .container{
+        width: calc(80%);
+        height: calc(80%);
+        .bar{
+          .slider-bar{
+            width: 20%;
+              .bar-text{
+                font-size: 1.2rem;
+              }
+          }//slider-bar
+          .menu-bar{
+              .menu-icon{
+                width: 80%;
+              }
+          }//menu-bar
+        }//bar
+        .resume{
+            .resume-container{
+              .display(rows,center);
+                .resume-pi{
+                  width: 50%;
+                  margin-left:10% ;
+                    .pi-pic{
+                      width: 120px;
+                      height: 120px;
+                    }
+                }//pi
+                .resume-rs{
+                  width: 50%;
+                }
+            }//container
+        }//resume
+        .skill{
+          gap: 5px;
+          grid-template-columns: repeat(1,1fr);
+            .skill-box{
+              height: 150px;
+              background-color: transparent;
+              margin-left: 5%
+              .display(row,center);
+                .skill-icon{
+                  display: none;
+                }
+                .skill-text{
+                  width: 80%;
+                  height: 100%;
+                  .display(column,center);
+                  h2{
+                    font-size: 1.2rem;
+                  }
+                  ul{
+                    font-size: .8rem;
+                      li{
+                        line-height: 150%;
+                        color: @color;
+                      }
+                  }
+                }
+            }
+        }//skill
+        .portfolio{
+          .carousel{
+            bottom: -50%;
+            height: 50%;
+              .carousel-title{
+                width: 50%;
+                  h1{
+                    padding-left: 20px;
+                    a{
+                      font-size: 1.8rem;
+                    }
+                  }
+                  .arrow{
+                      i{
+                        padding-left: 20px;
+                        font-size: 1.2rem;
+                      }
+                  }
+              }
+              .carousel-tro{
+                width: 30%;
+                font-size: 1rem;
+              }
+              .carousel-menu{
+                width: 20%;
+                height: 100%;
+                .display(column,center);
+                  h2{
+                    font-size: 1.2rem;
+                  }
+                  ul{
+                      li{
+                        line-height: 200%;
+                        font-size: .8rem;
+                      }
+                  }
+              }
+          }//carousel
+      }//portfolio
+      }//container
+  }
+}
+@media(max-height:300px){
+  #app{
+    overflow: scroll;
+    height: 250vh;
+      .container{
+        width: calc(80%);
+        height: calc(80%);
+        .bar{
+          .slider-bar{
+            width: 20%;
+              .bar-text{
+                font-size: 1.2rem;
+              }
+          }//slider-bar
+          .menu-bar{
+              .menu-icon{
+                width: 80%;
+              }
+          }//menu-bar
+        }//bar
+        .resume{
+            .resume-container{
+              .display(rows,center);
+                .resume-pi{
+                  width: 50%;
+                  margin-left:10% ;
+                    .pi-pic{
+                      width: 120px;
+                      height: 120px;
+                    }
+                }//pi
+                .resume-rs{
+                  width: 50%;
+                }
+            }//container
+        }//resume
+        .skill{
+          gap: 5px;
+          grid-template-columns: repeat(1,1fr);
+            .skill-box{
+              height: 150px;
+              background-color: transparent;
+              margin-left: 5%
+              .display(row,center);
+                .skill-icon{
+                  display: none;
+                }
+                .skill-text{
+                  width: 80%;
+                  height: 100%;
+                  .display(column,center);
+                  h2{
+                    font-size: 1.2rem;
+                  }
+                  ul{
+                    font-size: .8rem;
+                      li{
+                        line-height: 150%;
+                        color: @color;
+                      }
+                  }
+                }
+            }
+        }//skill
+        .portfolio{
+          .carousel{
+            bottom: -50%;
+            height: 50%;
+              .carousel-title{
+                width: 50%;
+                  h1{
+                    padding-left: 20px;
+                    a{
+                      font-size: 1.8rem;
+                    }
+                  }
+                  .arrow{
+                      i{
+                        padding-left: 20px;
+                        font-size: 1.2rem;
+                      }
+                  }
+              }
+              .carousel-tro{
+                width: 30%;
+                font-size: 1rem;
+              }
+              .carousel-menu{
+                width: 20%;
+                height: 100%;
+                .display(column,center);
+                  h2{
+                    font-size: 1.2rem;
+                  }
+                  ul{
+                      li{
+                        line-height: 200%;
+                        font-size: .8rem;
+                      }
+                  }
+              }
+          }//carousel
+      }//portfolio
+      }//container
+  }
+}
+
+
