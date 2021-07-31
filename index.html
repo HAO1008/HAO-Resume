@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAO-Resume</title>
+  <link rel="stylesheet" href="./css/style.min.css">
+  <!-- fontawasome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <!-- lottie -->
+    <script src="./js/lottie.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 主要框架 -->
+    <div class="container">
+      <!-- bar -->
+      <div class="bar">
+        <!-- slider-bar側邊欄位 -->
+        <div class="slider-bar">
+          <div class="bar-text">HAO</div>
+          <ul class="bar-icon">
+            <li><a href=""><i title="github" class="fab fa-github"></i></a></li>
+            <li><a href=""><i title="104履歷" class="fas fa-id-card"></i></a></li>
+            <li><a href=""><i title="cakeresume" class="fas fa-cheese"></i></a></li>
+          </ul>
+        </div>
+        <!-- menu-bar上邊欄位 -->
+        <div class="menu-bar">
+          <ul class="menu-icon">
+            <li @click="plusResumeActive"><a href="javascript:;"><i title="履歷" class="fas fa-home"></i></a></li>
+            <li @click="plusSkillActive"><a href="javascript:;"><i class="fas fa-tools"></i></a></li>
+            <li @click="plusPortfolioActive"><a href="javascript:;"><i class="fas fa-palette"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- resume履歷頁面 -->
+      <main class="resume" :class="{containerActive:resumeActive}">
+        <div class="resume-container">
+          <!-- 履歷聯絡 -->
+          <div class="resume-pi">
+            <div class="pi-pic"></div>
+            <div class="pi-contact">
+              <h2>聯絡資料</h2>
+              <ul v-for="item in contact">
+                <li>{{item.title}} : {{item.content}}</li>
+              </ul>
+            </div>
+          </div>
+          <!-- 履歷資料 -->
+          <div class="resume-rs">
+            <div class="resume-box" :class="{gridA:aboutTest},{gridB:workTest},{gridC:webTest}">
+              <div class="about">
+                <i class="fas fa-user"></i>
+                <div class="about-text">
+                  <h2>【關於我】</h2>
+                  <p>{{ about }}</p>
+                </div>
+              </div>
+              <div class="work">
+                <i class="fas fa-briefcase"></i>
+                <div class="work-text">
+                  <h2>工作經驗</h2>
+                  <ul v-for="item in work">
+                    <li class="exp-title">{{item.title}}</li>
+                    <li>{{item.content}}</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="web">
+                <i class="fas fa-code"></i>
+                <div class="web-text">
+                  <h2>前端經驗</h2>
+                  <ul v-for="item in web">
+                    <li class="exp-title">{{item.title}}</li>
+                    <li>{{item.content}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <ul class="box-link">
+              <li><a href="javascript:;" :class="{linkActive:btn == 1}" @click="changeAbout">About</a></li>
+              <li><a href="javascript:;" :class="{linkActive:btn == 2}" @click="changeWork">Work EXP</a></li>
+              <li><a href="javascript:;" :class="{linkActive:btn == 3}" @click="changeWeb">Web EXP</a></li>
+            </ul>
+          </div>
+        </div>
+      </main>
+      <!-- skill技能頁面 -->
+      <main class="skill" :class="{containerActive:skillActive}">
+        <div class="layout skill-box">
+          <div id="animation" class="skill-icon"></div>
+          <div class="skill-text">
+            <h2>HTML/CSS</h2>
+            <ul v-for="item in layout">
+              <li>{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="grammar skill-box">
+          <div id="animationn" class="skill-icon"></div>
+          <div class="skill-text">
+            <h2>Javascript</h2>
+            <ul v-for="item in grammar">
+              <li>{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="other skill-box">
+          <div id="animationnn" class="skill-icon"></div>
+          <div class="skill-text">
+            <h2>Other</h2>
+            <ul v-for="item in other">
+              <li>{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+      </main>
+      <!-- portfolio作品頁面 -->
+      <main class="portfolio" 
+      :class="{containerActive:portfolioActive}"
+      :style="{backgroundImage:'url('+that.src+')'}">
+        <div class="carousel">
+          <div class="carousel-title">
+            <h1><a :href="that.link" target="_blank">{{ that.name }}</a></h1>
+            <div class="arrow">
+              <i class="fas fa-chevron-left" @click="changeCarousel(-1)"></i>
+              <i class="fas fa-chevron-right" @click="changeCarousel(1)"></i>
+            </div>
+          </div>
+          <ul class="carousel-tro">
+            <p>{{that.tro}}<br><a :href="that.link" target="_blank">觀看作品</a></p>
+          </ul>
+          <div class="carousel-menu">
+              <h2>使用工具</h2>
+              <ul v-for="item in that.menu">
+                <li>{{item}}</li>
+              </ul>
+          </div>
+        </div>
+      </main>>
+  </div>
+
+  <script src="./js/vue.global.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
